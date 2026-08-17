@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NutriMatch — Personalized Meal Planner</title>
+  <meta name="description" content="A beginner-friendly nutrition-aware food recommendation and meal planning app.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white sticky-top border-bottom">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#"><span class="brand-dot"></span> NutriMatch</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#planner">Planner</a></li>
+        <li class="nav-item"><a class="nav-link" href="#foods">Foods</a></li>
+        <li class="nav-item"><a class="nav-link" href="#grocery">Grocery</a></li>
+        <li class="nav-item"><button class="btn btn-dark rounded-pill px-4" id="buildNav">Build my plan</button></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero py-5">
+  <div class="container py-lg-5">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <span class="eyebrow">PERSONALIZED • SIMPLE • FOOD-FIRST</span>
+        <h1 class="display-3 fw-bold mt-3">Eat for what<br><span class="accent">you need.</span></h1>
+        <p class="lead text-secondary mt-4 col-lg-10">Choose your nutrition goals, food preferences and budget. NutriMatch turns them into practical food ideas and a simple meal plan.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <button class="btn btn-dark btn-lg rounded-pill px-4" id="startBtn">Start planning <i class="bi bi-arrow-right ms-2"></i></button>
+          <a class="btn btn-outline-dark btn-lg rounded-pill px-4" href="#how">How it works</a>
+        </div>
+        <div class="mini-proof mt-4"><i class="bi bi-shield-check"></i> Food-first recommendations • No account required</div>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-card shadow-sm">
+          <div class="floating-badge"><i class="bi bi-stars"></i> Your plan</div>
+          <div class="plate">🥗</div>
+          <h4 class="fw-bold">Today's balanced plate</h4>
+          <p class="text-secondary small">Dal • Roti • Greens • Yogurt</p>
+          <div class="progress-stack">
+            <div><div class="d-flex justify-content-between small"><span>Protein</span><b>82%</b></div><div class="progress"><div class="progress-bar" style="width:82%"></div></div></div>
+            <div><div class="d-flex justify-content-between small"><span>Iron</span><b>76%</b></div><div class="progress"><div class="progress-bar" style="width:76%"></div></div></div>
+            <div><div class="d-flex justify-content-between small"><span>Fiber</span><b>91%</b></div><div class="progress"><div class="progress-bar" style="width:91%"></div></div></div>
+          </div>
+          <div class="tip"><i class="bi bi-lightbulb"></i><span>Add a vitamin-C-rich fruit with plant sources of iron.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="how" class="py-5 bg-light-subtle">
+  <div class="container py-4">
+    <div class="text-center mb-5"><span class="eyebrow">HOW IT WORKS</span><h2 class="fw-bold mt-2">Three simple steps</h2></div>
+    <div class="row g-4">
+      <div class="col-md-4"><div class="step-card"><span>01</span><i class="bi bi-bullseye"></i><h5>Choose your goals</h5><p>Pick nutrients or nutrition goals you want your meals to emphasize.</p></div></div>
+      <div class="col-md-4"><div class="step-card"><span>02</span><i class="bi bi-sliders"></i><h5>Set your preferences</h5><p>Tell us your diet, budget, cooking time and foods you want to avoid.</p></div></div>
+      <div class="col-md-4"><div class="step-card"><span>03</span><i class="bi bi-magic"></i><h5>Get your plan</h5><p>See matched foods, meals, nutrient coverage and a grocery list.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<main id="planner" class="container py-5">
+  <div class="section-title mb-4">
+    <span class="eyebrow">YOUR PROFILE</span>
+    <h2 class="fw-bold mt-2">Build your nutrition profile</h2>
+    <p class="text-secondary">This demo uses a curated food dataset and simple matching logic.</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <div class="panel p-4 p-lg-5">
+        <label class="form-label fw-semibold">What are your nutrition goals?</label>
+        <div class="goal-grid" id="goalGrid"></div>
+
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Diet</label>
+            <select class="form-select" id="diet">
+              <option value="vegetarian">Vegetarian</option>
+              <option value="vegan">Vegan</option>
+              <option value="eggetarian">Eggetarian</option>
+              <option value="omnivore">Non-vegetarian</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Daily budget</label>
+            <select class="form-select" id="budget">
+              <option value="low">Under ₹150</option>
+              <option value="medium" selected>₹150–₹300</option>
+              <option value="high">₹300+</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Cooking time</label>
+            <select class="form-select" id="time">
+              <option value="quick">15 minutes or less</option>
+              <option value="medium" selected>30 minutes</option>
+              <option value="slow">I enjoy cooking</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Foods to avoid</label>
+            <input class="form-control" id="avoid" placeholder="e.g. peanuts, spinach">
+          </div>
+        </div>
+
+        <button class="btn btn-dark w-100 rounded-pill mt-4 py-3" id="generateBtn">
+          <i class="bi bi-stars me-2"></i>Generate my recommendations
+        </button>
+        <div class="small text-secondary mt-3"><i class="bi bi-info-circle me-1"></i>This tool is for general nutrition planning, not diagnosis or treatment.</div>
+      </div>
+    </div>
+
+    <div class="col-lg-5">
+      <div class="summary-card p-4">
+        <div class="d-flex justify-content-between align-items-center">
+          <div><span class="eyebrow">YOUR GOALS</span><h5 class="fw-bold mt-2 mb-0" id="goalSummary">Select goals below</h5></div>
+          <div class="score-circle" id="score">—</div>
+        </div>
+        <hr>
+        <div id="summaryText" class="text-secondary small">Choose at least one goal to start.</div>
+        <div class="quick-stat mt-4"><span>Foods matched</span><b id="matchCount">0</b></div>
+        <div class="quick-stat"><span>Meals generated</span><b id="mealCount">0</b></div>
+        <div class="quick-stat"><span>Grocery items</span><b id="groceryCount">0</b></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="foods" class="pt-5">
+    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+      <div><span class="eyebrow">FOOD MATCHES</span><h2 class="fw-bold mt-2 mb-0">Foods for your goals</h2></div>
+      <span class="badge rounded-pill text-bg-light" id="foodLabel">Generate a plan to see matches</span>
+    </div>
+    <div class="row g-4" id="foodResults"></div>
+  </section>
+
+  <section class="pt-5" id="mealSection">
+    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+      <div><span class="eyebrow">MEAL PLAN</span><h2 class="fw-bold mt-2 mb-0">A simple day of eating</h2></div>
+      <button class="btn btn-outline-dark rounded-pill" id="shuffleBtn"><i class="bi bi-shuffle me-2"></i>Shuffle meals</button>
+    </div>
+    <div class="row g-3" id="mealResults"></div>
+  </section>
+
+  <section class="pt-5">
+    <div class="panel p-4 p-lg-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-5"><span class="eyebrow">NUTRIENT SNAPSHOT</span><h2 class="fw-bold mt-2">See what your plan contributes</h2><p class="text-secondary">Coverage here is a simple planning indicator based on the selected meal set, not a medical assessment.</p></div>
+        <div class="col-lg-7" id="nutrientBars"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="grocery" class="pt-5 pb-5">
+    <div class="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
+      <div><span class="eyebrow">SHOPPING LIST</span><h2 class="fw-bold mt-2 mb-0">Your grocery list</h2></div>
+      <button class="btn btn-dark rounded-pill" id="copyGrocery"><i class="bi bi-clipboard me-2"></i>Copy list</button>
+    </div>
+    <div class="panel p-4" id="groceryList"><p class="text-secondary mb-0">Generate a plan to create your list.</p></div>
+  </section>
+</main>
+
+<footer class="border-top py-4">
+  <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
+    <span class="fw-semibold">🥗 NutriMatch</span>
+    <span class="text-secondary small">A frontend nutrition-planning demo built with HTML, CSS, JavaScript & Bootstrap.</span>
+  </div>
+</footer>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="toast" class="toast"><div class="toast-body"></div></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/foods.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
