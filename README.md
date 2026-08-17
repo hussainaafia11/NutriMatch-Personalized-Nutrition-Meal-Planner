@@ -95,9 +95,10 @@ The application is built with Bootstrap and is designed to work across:
 ---
 
 ## 🖥️ Demo
-### Working Demo
 
-![NutriMatch Demo](Nutimatch_app_demo.mp4")
+🌐 **[Live Demo](https://YOUR-USERNAME.github.io/nutrimatch/)**
+
+
 
 
 ---
