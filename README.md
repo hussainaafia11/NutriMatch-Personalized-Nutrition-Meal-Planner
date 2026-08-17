@@ -96,7 +96,7 @@ The application is built with Bootstrap and is designed to work across:
 
 ## 🖥️ Demo
 
-🌐 **[Live Demo](https://YOUR-USERNAME.github.io/nutrimatch/)**
+🌐 **[Live Demo](https://hussainaafia11.github.io/NutriMatch-Personalized-Nutrition-Meal-Planner/)**
 
 
 
